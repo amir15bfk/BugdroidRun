@@ -4,26 +4,39 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private boolean isMute;
+    private MediaPlayer menuMusic;
+
+    public static boolean isMute = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         findViewById(R.id.start).setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 (findViewById(R.id.loading)).setVisibility(View.VISIBLE);
                 (findViewById(R.id.loading_text)).setVisibility(View.VISIBLE);
+
+                menuMusic.pause();
                 startActivity(new Intent(MainActivity.this, GameActivity.class));
 
             }
         });
+        //turning up the music on when class create
+        menuMusic = MediaPlayer.create(MainActivity.this,R.raw.menu);
+        menuMusic.setLooping(true);
+        menuMusic.start();
+
 
         TextView highScoreTxt = findViewById(R.id.highscore);
 
@@ -34,20 +47,29 @@ public class MainActivity extends AppCompatActivity {
 
         final ImageView volumeCtrl = findViewById(R.id.volumeCtrl);
 
-        if (isMute)
+        if (isMute) {
             volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_off_24);
-        else
+            menuMusic.pause();
+        }
+        else {
             volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_up_24);
+            menuMusic.start();
+        }
 
         volumeCtrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 isMute = !isMute;
-                if (isMute)
+                if (isMute){
                     volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_off_24);
-                else
+                    menuMusic.pause();
+                }
+
+                else{
                     volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_up_24);
+                    menuMusic.start();
+                }
 
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putBoolean("isMute", isMute);
@@ -55,5 +77,27 @@ public class MainActivity extends AppCompatActivity {
 
             }
     });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //restart the music after pause
+        if (!isMute)
+        menuMusic.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //pause  the music if app has paused
+        menuMusic.pause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        menuMusic.stop();
+        menuMusic.release();
     }
 }

@@ -10,10 +10,13 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bugdroidrun.Background;
 import com.example.bugdroidrun.GameActivity;
@@ -23,7 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class GameView extends SurfaceView implements Runnable {
+public class GameView extends SurfaceView implements Runnable  {
+
 
     private Thread thread;
     private boolean isPlaying, isGameOver = false;
@@ -41,8 +45,11 @@ public class GameView extends SurfaceView implements Runnable {
     private Waterfall waterfall;
     private GradleElef gradle1,gradle2;
     public One one;
+    private MediaPlayer backgroundMusic;
+
 
     public GameView(GameActivity activity, int screenX, int screenY) {
+
         super(activity);
 
         this.activity = activity;
@@ -156,7 +163,7 @@ public class GameView extends SurfaceView implements Runnable {
                 score+=1;
                 one.display=true;
                 if (!prefs.getBoolean("isMute", false))
-                    soundPool.play(sound1, 1, 1, 0, 0, 1);
+                    soundPool.play(sound1, 1, 1, 0, 1, 1);
             }
         if (Rect.intersects(gradle1.getCollisionShape(),bugdriod.getCollisionShape()) || Rect.intersects(gradle2.getCollisionShape(),bugdriod.getCollisionShape())){
             isGameOver= true;
@@ -186,11 +193,12 @@ public class GameView extends SurfaceView implements Runnable {
 
 
             if (isGameOver){
+                GameActivity.gameMusic.stop();
                 isPlaying=false;
                 gameOver = new Background(screenX,screenY,getResources(),400);
                 canvas.drawBitmap(gameOver.background,0,0,paint);
                 if (!prefs.getBoolean("isMute", false))
-                    soundPool.play(sound2, 1, 1, 0, 0, 1);
+                    soundPool.play(sound2, 1, 1, 0, 1, 1);
                 getHolder().unlockCanvasAndPost(canvas);
                 saveIfHighScore();
 
