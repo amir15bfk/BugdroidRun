@@ -29,8 +29,8 @@ public class GradleElef {
         width = gradle_c1.getWidth();
         height = gradle_c1.getHeight();
 
-        width /= 20;
-        height /= 20;
+        width /= 10;
+        height /= 10;
 
         width = (int) (width / screenRatioX);
         height = (int) (height / screenRatioY);
