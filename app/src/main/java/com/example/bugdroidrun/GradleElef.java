@@ -32,8 +32,8 @@ public class GradleElef {
         width /= 20;
         height /= 20;
 
-        width = (int) (width * screenRatioX);
-        height = (int) (height * screenRatioY);
+        width = (int) (width / screenRatioX);
+        height = (int) (height / screenRatioY);
 
         gradle_c1 = Bitmap.createScaledBitmap(gradle_c1, width, height, false);
         gradle_c2 = Bitmap.createScaledBitmap(gradle_c2, width, height, false);
