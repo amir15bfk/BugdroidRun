@@ -34,7 +34,7 @@ public class GameView extends SurfaceView implements Runnable  {
     private int screenX, screenY, score = 0;
     public static float screenRatioX, screenRatioY;
     private Paint paint;
-    private float gamespeed=1;
+    private float gamespeed=2;
     private SharedPreferences prefs;
     private Random random;
     private SoundPool soundPool;
@@ -75,8 +75,8 @@ public class GameView extends SurfaceView implements Runnable  {
 
         this.screenX = screenX;
         this.screenY = screenY;
-        screenRatioX = 1920f / screenX;
-        screenRatioY = 1080f / screenY;
+        screenRatioX = 3040f / screenX;
+        screenRatioY = 1440f / screenY;
 
         background1 = new Background(screenX, screenY, getResources(),1);
         background2 = new Background(screenX, screenY, getResources(),2);
