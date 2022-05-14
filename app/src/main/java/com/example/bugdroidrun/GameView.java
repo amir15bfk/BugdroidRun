@@ -70,7 +70,7 @@ public class GameView extends SurfaceView implements Runnable  {
             soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
 
         sound1 = soundPool.load(activity, R.raw.point, 1);
-        sound2 = soundPool.load(activity, R.raw.error, 1);
+        sound2 = soundPool.load(activity, R.raw.gameover, 1);
 
 
         this.screenX = screenX;
@@ -163,7 +163,7 @@ public class GameView extends SurfaceView implements Runnable  {
                 score+=1;
                 one.display=true;
                 if (!prefs.getBoolean("isMute", false))
-                    soundPool.play(sound1, 1, 1, 0, 1, 1);
+                    soundPool.play(sound1, 1, 1, 0, 0, 1);
             }
         if (Rect.intersects(gradle1.getCollisionShape(),bugdriod.getCollisionShape()) || Rect.intersects(gradle2.getCollisionShape(),bugdriod.getCollisionShape())){
             isGameOver= true;
@@ -194,11 +194,13 @@ public class GameView extends SurfaceView implements Runnable  {
 
             if (isGameOver){
                 GameActivity.gameMusic.stop();
+                GameActivity.waterfall.stop();
+
                 isPlaying=false;
                 gameOver = new Background(screenX,screenY,getResources(),400);
                 canvas.drawBitmap(gameOver.background,0,0,paint);
                 if (!prefs.getBoolean("isMute", false))
-                    soundPool.play(sound2, 1, 1, 0, 1, 1);
+                    soundPool.play(sound2, 20, 20, 0, 0, 1);
                 getHolder().unlockCanvasAndPost(canvas);
                 saveIfHighScore();
 
@@ -265,9 +267,11 @@ public class GameView extends SurfaceView implements Runnable  {
                 if (bugdriod.y==(float)screenY*4 / 6)bugdriod.speed=20;
                 else bugdriod.speed=-20*gamespeed;
 
-                break;
+                    break;
             case MotionEvent.ACTION_UP:
-                break;
+                if (!prefs.getBoolean("isMute", false))
+                    GameActivity.jump.start();
+                    break;
         }
 
         return true;

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //turning up the music on when class create
-        menuMusic = MediaPlayer.create(MainActivity.this,R.raw.menu);
+        menuMusic = MediaPlayer.create(MainActivity.this,R.raw.back);
         menuMusic.setLooping(true);
         menuMusic.start();
 
