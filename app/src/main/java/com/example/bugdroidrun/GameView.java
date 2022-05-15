@@ -234,7 +234,7 @@ public class GameView extends SurfaceView implements Runnable  {
 
     private void sleep () {
         try {
-            Thread.sleep(1);
+            Thread.sleep(17);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -264,8 +264,8 @@ public class GameView extends SurfaceView implements Runnable  {
         switch(event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 if (isGameOver)waitBeforeExiting ();
-                if (bugdriod.y==(float)screenY*4 / 6)bugdriod.speed=45;
-                else bugdriod.speed=-45*gamespeed;
+                if (bugdriod.y==(float)screenY*4 / 6)bugdriod.speed=20;
+                else bugdriod.speed=-20*gamespeed;
 
                     break;
             case MotionEvent.ACTION_UP:
