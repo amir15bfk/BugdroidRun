@@ -59,7 +59,7 @@ public class Bugdroid {
     void update(){
         y-=speed*screenRatioY;
         if (y<(float)screenY*4 / 6)
-            speed-=0.9*screenRatioY;
+            speed-=2.025/screenRatioY;
             else
         if (y>=(float)screenY*4 / 6){
             y=(float)screenY*4 / 6;
