@@ -38,10 +38,11 @@ public class MainActivity extends AppCompatActivity {
         menuMusic.start();
 
 
-        TextView highScoreTxt = findViewById(R.id.highscore);
+        ImageView highScoreImg = findViewById(R.id.Bestscore);
+        TextView highScoreTxt = findViewById(R.id.hightscore);
 
         final SharedPreferences prefs = getSharedPreferences("game", MODE_PRIVATE);
-        highScoreTxt.setText("HighScore: " + prefs.getInt("highscore", 0));
+        highScoreTxt.setText(": " + prefs.getInt("highscore", 0));
 
         isMute = prefs.getBoolean("isMute", false);
 

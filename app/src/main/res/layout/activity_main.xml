@@ -11,8 +11,8 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/fullbackground"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/fullbackground" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,26 +20,19 @@
         android:gravity="center"
         android:layout_margin="15dp">
 
-    <ImageView
-        android:layout_width="98sp"
-        android:layout_height="98sp"
-        android:src="@drawable/bugdroid1" />
+        <ImageView
+            android:layout_width="500dp"
+            android:layout_height="98dp"
+            android:src="@drawable/name" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bugdriod run"
-        android:textColor="#fff"
-        android:textSize="48sp" />
     </LinearLayout>
+
     <ImageView
+        android:id="@+id/start"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/start"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:id="@+id/start"/>
+        android:layout_centerInParent="true"
+        android:src="@drawable/start" />
 
     <ImageView
         android:id="@+id/volumeCtrl"
@@ -48,14 +41,24 @@
         android:layout_alignParentRight="true"
         android:layout_margin="16dp"
         android:src="@drawable/ic_baseline_volume_up_24" />
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:textColor="@color/white"
-        android:padding="10dp"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/highscore"/>
+        android:layout_alignParentBottom="true">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bestscore"
+            android:padding="10dp"
+            android:id="@+id/Bestscore"/>
+        <TextView
+            android:id="@+id/hightscore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
     <ImageView
         android:id="@+id/loading"
         android:layout_width="match_parent"

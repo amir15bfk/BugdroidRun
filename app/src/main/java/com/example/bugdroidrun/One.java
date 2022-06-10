@@ -18,8 +18,8 @@ public class One {
         width = background.getWidth();
         height = background.getHeight();
 
-        width /= 5;
-        height /= 5;
+        /*width /= 5;
+        height /= 5;*/
 
         width = (int) (width / screenRatioX);
         height = (int) (height / screenRatioY);

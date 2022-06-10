@@ -122,10 +122,10 @@ public class GameView extends SurfaceView implements Runnable  {
 
     private void update ()  {
 
-        background1.x -= 2 * screenRatioX*gamespeed;
-        background2.x -= 2 * screenRatioX*gamespeed;
-        grass1.x -= 6 * screenRatioX*gamespeed;
-        grass2.x -= 6 * screenRatioX*gamespeed;
+        background1.x -= 4.5 / screenRatioX*gamespeed;
+        background2.x -= 4.5 / screenRatioX*gamespeed;
+        grass1.x -= 13.5 / screenRatioX*gamespeed;
+        grass2.x -= 13.5 / screenRatioX*gamespeed;
         if (background1.x + background1.background.getWidth() < 0) {
             background1.x = screenX;
         }
@@ -142,9 +142,9 @@ public class GameView extends SurfaceView implements Runnable  {
             grass1.x = 0;
             grass2.x = screenX;
         }
-        waterfall.x -= 3 * screenRatioX*gamespeed;
+        waterfall.x -= 6.75 / screenRatioX*gamespeed;
         waterfall.nextOne();
-        page2.x -= 3 * screenRatioX*gamespeed;
+        page2.x -= 6.75 /screenRatioX*gamespeed;
 
         if (waterfall.x + waterfall.background.getWidth() < 0) {
             waterfall.x = screenX;
@@ -155,8 +155,8 @@ public class GameView extends SurfaceView implements Runnable  {
             waterfall.x = 0;
         }
         bugdriod.update();
-        gradle1.x -= 6 * screenRatioX*gamespeed;
-        gradle2.x -= 6 * screenRatioX*gamespeed;
+        gradle1.x -= 13.5 / screenRatioX*gamespeed;
+        gradle2.x -= 13.5 / screenRatioX*gamespeed;
         gradle1.update(one);
         gradle2.update(one);
             if (((gradle1.x<0)||(gradle2.x<0))&& !one.display){
@@ -264,8 +264,8 @@ public class GameView extends SurfaceView implements Runnable  {
         switch(event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 if (isGameOver)waitBeforeExiting ();
-                if (bugdriod.y==(float)screenY*4 / 6)bugdriod.speed=20;
-                else bugdriod.speed=-20*gamespeed;
+                if (bugdriod.y==(float)screenY*4 / 6)bugdriod.speed=45;
+                else bugdriod.speed=-45*gamespeed;
 
                     break;
             case MotionEvent.ACTION_UP:

@@ -40,7 +40,7 @@ public class Bugdroid {
         dead = Bitmap.createScaledBitmap(dead, width, height, false);
 
         y = screenY / 2;
-        x = (64 * screenRatioX);
+        x = (144 / screenRatioX);
 
     }
 
@@ -59,7 +59,7 @@ public class Bugdroid {
     void update(){
         y-=speed/screenRatioY;
         if (y<(float)screenY*4 / 6)
-            speed-=2.025/screenRatioY;
+            speed-=3.5/screenRatioY;
             else
         if (y>=(float)screenY*4 / 6){
             y=(float)screenY*4 / 6;
