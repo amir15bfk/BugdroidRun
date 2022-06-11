@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private MediaPlayer menuMusic;
 
     public static boolean isMute = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 (findViewById(R.id.loading)).setVisibility(View.VISIBLE);
-                (findViewById(R.id.loading_text)).setVisibility(View.VISIBLE);
+                (findViewById(R.id.loading_img3)).setVisibility(View.VISIBLE);
+
 
                 menuMusic.pause();
                 startActivity(new Intent(MainActivity.this, GameActivity.class));
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //turning up the music on when class create
-        menuMusic = MediaPlayer.create(MainActivity.this,R.raw.back);
+        menuMusic = MediaPlayer.create(MainActivity.this, R.raw.back);
         menuMusic.setLooping(true);
         menuMusic.start();
 
@@ -51,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
         if (isMute) {
             volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_off_24);
             menuMusic.pause();
-        }
-        else {
+        } else {
             volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_up_24);
             menuMusic.start();
         }
@@ -62,12 +63,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 isMute = !isMute;
-                if (isMute){
+                if (isMute) {
                     volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_off_24);
                     menuMusic.pause();
-                }
-
-                else{
+                } else {
                     volumeCtrl.setImageResource(R.drawable.ic_baseline_volume_up_24);
                     menuMusic.start();
                 }
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 editor.apply();
 
             }
-    });
+        });
     }
 
     @Override
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         //restart the music after pause
         if (!isMute)
-        menuMusic.start();
+            menuMusic.start();
 
     }
 
