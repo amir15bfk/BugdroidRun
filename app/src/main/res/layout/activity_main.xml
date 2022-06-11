@@ -92,22 +92,6 @@
         android:visibility="gone" />
 
     <ImageView
-        android:id="@+id/loading_img1"
-        android:layout_width="wrap_content"
-        android:src="@drawable/loading1"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="gone" />
-    <ImageView
-        android:id="@+id/loading_img2"
-        android:layout_width="wrap_content"
-        android:src="@drawable/loading2"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="gone" />
-    <ImageView
         android:id="@+id/loading_img3"
         android:layout_width="wrap_content"
         android:src="@drawable/loading3"
