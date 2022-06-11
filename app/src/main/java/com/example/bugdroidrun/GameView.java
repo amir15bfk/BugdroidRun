@@ -202,8 +202,8 @@ public class GameView extends SurfaceView implements Runnable  {
                 if (!prefs.getBoolean("isMute", false))
                     soundPool.play(sound2, 20, 20, 0, 0, 1);
                 getHolder().unlockCanvasAndPost(canvas);
+                saveLastScore();
                 saveIfHighScore();
-
                 return;
             }
 
@@ -229,6 +229,14 @@ public class GameView extends SurfaceView implements Runnable  {
             editor.putInt("highscore", score);
             editor.apply();
         }
+
+    }
+
+    private void saveLastScore() {
+
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt("lastscore", score);
+            editor.apply();
 
     }
 

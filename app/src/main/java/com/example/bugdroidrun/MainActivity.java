@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
         menuMusic.start();
 
 
-        ImageView highScoreImg = findViewById(R.id.Bestscore);
         TextView highScoreTxt = findViewById(R.id.hightscore);
-
+        TextView lastScoreTxt = findViewById(R.id.lastscore);
         final SharedPreferences prefs = getSharedPreferences("game", MODE_PRIVATE);
+        lastScoreTxt.setText(": " + prefs.getInt("lastscore", 0));
         highScoreTxt.setText(": " + prefs.getInt("highscore", 0));
 
         isMute = prefs.getBoolean("isMute", false);
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         //restart the music after pause
         if (!isMute)
         menuMusic.start();
+
     }
 
     @Override
